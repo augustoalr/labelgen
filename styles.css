@@ -1,0 +1,411 @@
+/* body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+#rotulosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.rotulo {
+    width: 8cm;
+    height: 6cm;
+    margin: 10px;
+    padding: 0.5cm;
+    position: relative;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rotulo::before,
+.rotulo::after,
+.rotulo::before,
+.rotulo::after {
+    content: '+';
+    position: absolute;
+    font-size: 24px;
+    color: #000;
+}
+
+.rotulo::before {
+    top: -12px;
+    left: -12px;
+}
+
+.rotulo::after {
+    top: -12px;
+    right: -12px;
+}
+
+.rotulo::before {
+    bottom: -12px;
+    left: -12px;
+}
+
+.rotulo::after {
+    bottom: -12px;
+    right: -12px;
+}
+
+.rotulo p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.rotulo .autor {
+    font-weight: bold;
+}
+
+.rotulo .titulo {
+    font-style: italic;
+}
+
+.rotulo .nroBien {
+    position: absolute;
+    bottom: 0.3cm;
+    right: 0.3cm;
+}
+
+.editButton, .deleteButton {
+    font-size: 12px;
+    padding: 2px 5px;
+    margin: 2px;
+}
+
+.fondoSuperior, .fondoInferior {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+.fondoSuperior {
+    top: 0;
+}
+
+.fondoInferior {
+    bottom: 0;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.file-input-wrapper input[type="file"] {
+    margin-right: 10px;
+}
+
+.remove-file {
+    cursor: pointer;
+    color: red;
+} */
+
+
+
+    
+ 
+    
+
+
+
+/* TEMA HALLOWEEN TEMPORAL */
+
+/* General Halloween Styling */
+body {
+    font-family: 'Nosifer', Arial, sans-serif; /* Creepster es una fuente gratuita de Google Fonts, ideal para Halloween */
+    background-color: #1e1e1e;
+    color: #ff6b6b; /* Color principal: rojo sangre */
+    margin: 0;
+    padding: 20px;
+    background-image: url('/img/BG.png'); /* Fondo oscuro con calabazas fantasmales */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position:center;
+    line-height: 1.3;
+}
+
+/* Container with a Halloween feel */
+.container {
+    
+    display:flex;
+    flex-direction:column;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 8px rgba(255, 106, 53, 0.5); /* Sombra con brillo anaranjado */
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    color: #ff9f1c; /* Naranja de calabaza */
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px #000;
+}
+
+/* Responsive Heading */
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Form Inputs and Selects */
+form{
+
+  display:flex;
+  flex-direction:column;
+  margin-bottom: 20px;
+  padding:20px;
+  
+}
+
+
+
+input, select, button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #6a1b9a;
+    color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
+
+
+#musicaControl {
+    background-color: #6a1b9a; /* Morado oscuro */
+    color: #f0f0f0;
+    border: 1px solid #ff6b6b; /* Bordes rojos */
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Nosifer', Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 5px 1px rgba(255, 106, 53, 0.3);
+}
+
+#musicaControl:hover {
+    background-color: #4a148c; /* Morado más oscuro */
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 3px rgba(255, 106, 53, 0.4);
+}
+
+
+
+input::placeholder, select {
+    color: #ff9f1c;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 12px 4px rgba(255, 106, 53, 0.5); /* Brillo anaranjado */
+}
+
+/* Buttons */
+button {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Nosifer', Arial, sans-serif;
+    text-transform: uppercase;
+    
+}
+
+button:hover {
+    background-color: #FF9F1C;
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px 5px rgba(255, 106, 53, 0.5);
+}
+
+/* Rótulo Container */
+#rotulosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Rótulos */
+.rotulo {
+    width: 6cm;
+    height: 6cm;
+    margin: 10px;
+    padding: 0.5cm;
+    position: relative;
+    background-color: #000000cc; /* Fondo oscuro con transparencia */
+    color: #ff9f1c;
+    font-family:  Arial, sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #d9534f; /* Bordes de sangre */
+    border-radius: 8px;
+    box-shadow: 0 0 20px 8px rgba(255, 0, 0, 0.4); /* Sombra con un toque de rojo */
+}
+
+.rotulo p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+/* Autor */
+.rotulo .autor {
+    font-weight: bold;
+    color: #ffcc00; /* Amarillo fantasmagórico */
+}
+
+/* Título */
+.rotulo .titulo {
+    font-style: italic;
+    color: #ffeb3b; /* Amarillo más claro para destacar */
+}
+
+/* Número de Bien */
+.rotulo .nroBien {
+    position: absolute;
+    bottom: 0.3cm;
+    right: 0.3cm;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* Buttons for edit and delete */
+.editButton, .deleteButton {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 5px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.editButton {
+    background-color: #6A1B9A; /* Verde fantasmagórico */
+}
+
+.deleteButton {
+    background-color: #d9534f; /* Rojo sangre */
+}
+
+.editButton:hover, .deleteButton:hover {
+    transform: scale(1.1);
+}
+
+/* Fondo superior e inferior (para personalizar con Halloween) */
+.fondoSuperior, .fondoInferior {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+.fondoSuperior {
+    top: 0;
+    background-image: url('https://i.imgur.com/UWkz1fb.png'); /* Sombras espeluznantes */
+}
+
+.fondoInferior {
+    bottom: 0;
+    background-image: url('https://i.imgur.com/OX7d8BX.png'); /* Mismo fondo */
+}
+
+/* Scrollbar Halloween */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff6b6b; /* Rojo sangriento */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+/* Halloween-themed hover glow for spooky vibes */
+button, .editButton, .deleteButton {
+    box-shadow: 0 0 10px 2px rgba(255, 106, 53, 0.4);
+}

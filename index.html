@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" type="image/png">
+    <title>Generador de Rótulos de Arte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Butcherman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>Generador de rótulos</h1>
+      <!-- Agregando el audio -->
+        <audio id="fondoMusical" loop autoplay>
+            <source src="/mp3/Relaxing Corpse Bride Music ｜｜ Haunted Cemetery Ambience.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+        </audio>
+
+        <!-- Botón para controlar la música -->
+        <button id="musicaControl">Ambiente músical 🎵</button>
+      
+      
+        <form id="labelForm">
+            <input type="text" id="nroBien" placeholder="Nro de bien" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="text" id="titulo" placeholder="Título" required>
+            <input type="text" id="fecha" placeholder="Fecha" required>
+            <input type="text" id="tecnica" placeholder="Técnica" required>
+            <input type="text" id="medidas" placeholder="Medidas" required>
+            <select class="selector" id="fondo" required>
+                <option value="">Seleccione el fondo</option>
+                <option value="casaAmarilla">Casa Amarilla</option>
+                <option value="torreMRE">Torre del MRE</option>
+                <option value="neutro">Neutro</option>
+                <option value="personalizado">Personalizado</option>
+            </select>
+            <div id="personalizadoOptions" style="display: none;">
+                <div class="file-input-wrapper">
+                    <input type="file" id="fondoSuperior" accept="image/*">
+                    <span class="remove-file" style="display: none;">×</span>
+                </div>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fondoInferior" accept="image/*">
+                    <span class="remove-file" style="display: none;">×</span>
+                </div>
+                <!-- Inputs para ajustar el tamaño de la imagen -->
+
+
+            </div>
+            <button type="submit">Generar rótulo</button>
+            <button id="generarPDF">Generar PDF</button>
+        </form>
+        
+
+
+        
+        <div id="rotulosContainer"></div>
+    </div>
+    
+    <img id="logoMRE" src="/img/torre.png" style="display: none; " >
+    <img id="logoCasa" src="/img/Untitled.jpg" style="display: none;">
+    <img id="logoCasaUnder" src="/img/under.jpg" style="display: none;">
+   
+   
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+</html>
