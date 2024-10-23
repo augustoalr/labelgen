@@ -336,6 +336,18 @@ button:hover {
 .rotulo .titulo {
     font-style: italic;
     color: #ffeb3b; /* Amarillo más claro para destacar */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 5.5cm; /* Un poco menos que el ancho total para márgenes */
+    white-space: normal; /* Permite saltos de línea */
+    line-height: 1.2em; /* Espaciado entre líneas adecuado */
+    max-height: 2.4em; /* Limitar a 2 líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Máximo 2 líneas */
+    line-clamp: 2; /* Máximo 2 líneas */
+    -webkit-box-orient: vertical;
 }
 
 /* Número de Bien */

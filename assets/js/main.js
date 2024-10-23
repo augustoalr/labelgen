@@ -29,6 +29,28 @@ function generarRotulo() {
         fondo: document.getElementById('fondo').value
     };
 
+    function dividirTextoConPalabrasCompletas(texto, limite) {
+        if (texto.length <= limite) return texto; // Si el texto ya es menor al límite, no lo divide.
+    
+        // Encuentra el último espacio antes del límite
+        let indexEspacio = texto.lastIndexOf(' ', limite);
+    
+        // Si no encuentra un espacio, corta en el límite exacto (pero esto es raro)
+        if (indexEspacio === -1) indexEspacio = limite;
+    
+        // Divide el texto manteniendo las palabras completas
+        return texto.slice(0, indexEspacio) + '\n' + texto.slice(indexEspacio + 1);
+    }
+    
+    // Aplicar la función a tu lógica
+    if (rotulo.titulo.length > 38) {
+        rotulo.titulo = dividirTextoConPalabrasCompletas(rotulo.titulo, 38);
+        rotulo.fecha = '\n' + rotulo.fecha;
+        rotulo.tecnica = '\n' + rotulo.tecnica;
+        rotulo.medidas = '\n' + rotulo.medidas;
+    }
+    
+
     if (rotulo.fondo === 'personalizado') {
         rotulo.fondoSuperior = document.getElementById('fondoSuperior').files[0];
         rotulo.fondoInferior = document.getElementById('fondoInferior').files[0];
@@ -142,11 +164,11 @@ function generarPDF() {
     const logoWidthCasaUnder = 8; // Ajusta según sea necesario
     const logoHeightCasaUnder = 8; // Ajusta según sea necesario
 
-
+    
 
     // Función auxiliar para dibujar una cruz
     function dibujarCruz(x, y) {
-        doc.setFontSize(24);
+        doc.setFontSize(22);
         doc.text('+', x, y);
     }
 
@@ -168,6 +190,8 @@ function generarPDF() {
             y = margin;
             dibujarCrucesPagina();
         }
+
+        
       
       // Aplicar fondo si es necesario
         if (rotulo.fondo === 'casaAmarilla') {
@@ -198,7 +222,7 @@ function generarPDF() {
             // Esta parte requiere un manejo más complejo que no se puede resolver completamente aquí
         }
 
-        doc.setFontSize(12);
+        doc.setFontSize(13);
         doc.setFont("helvetica");
 
         // Calcular la altura total del texto
@@ -251,6 +275,9 @@ function generarPDF() {
 
     
 }
+
+
+
 
 // Control de la música halloween
 
