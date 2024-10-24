@@ -143,8 +143,8 @@ function generarPDF() {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
-    const rotuloWidth = 80; // 8cm en puntos
-    const rotuloHeight = 60; // 6cm en puntos
+    const rotuloWidth = 100; // 8cm en puntos (80)
+    const rotuloHeight = 50; // 6cm en puntos (60)
     const margin = 10;
     let x = margin;
     let y = margin;
@@ -245,19 +245,19 @@ function generarPDF() {
         doc.text(rotulo.nroBien, x + rotuloWidth - 20, y + rotuloHeight - 5);
 
         doc.setFont("helvetica", "bold");
-        doc.text(rotulo.autor, x + 5, textY);
+        doc.text(rotulo.autor, x + 3, textY);
         textY += lineHeight;
 
         doc.setFont("helvetica", "italic");
-        doc.text(rotulo.titulo, x + 5, textY);
+        doc.text(rotulo.titulo, x + 3, textY);
         textY += lineHeight;
 
         doc.setFont("helvetica", "normal");
-        doc.text(rotulo.fecha, x + 5, textY);
+        doc.text(rotulo.fecha, x + 3, textY);
         textY += lineHeight;
-        doc.text(rotulo.tecnica, x + 5, textY);
+        doc.text(rotulo.tecnica, x + 3, textY);
         textY += lineHeight;
-        doc.text(rotulo.medidas, x + 5, textY);
+        doc.text(rotulo.medidas, x + 3, textY);
 
        
 
