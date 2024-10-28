@@ -144,40 +144,64 @@ function generarPDF() {
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const rotuloWidth = 80; // 8cm en puntos
-    const rotuloHeight = 60; // 6cm en puntos
+    const rotuloHeight = 40; // 6cm en puntos
     const margin = 10;
     let x = margin;
     let y = margin;
     let count = 0;
+
+
+    const verticalOffset = 2; // Ajusta este valor: negativo = arriba, positivo = abajo
   
   // Cargar el logo MRE
     const logoMRE = document.getElementById('logoMRE');
-    const logoWidth = 10; // Ajusta según sea necesario
-    const logoHeight = 10; // Ajusta según sea necesario
+    const logoWidthTorre = 7; // Ajusta según sea necesario
+    const logoHeightTorre = 7; // Ajusta según sea necesario
 
     // Cargar el logo Casa
     const logoCasa = document.getElementById('logoCasa');
-    const logoWidthCasa = 8; // Ajusta según sea necesario
-    const logoHeightCasa = 8; // Ajusta según sea necesario
+    const logoWidthCasa = 7; // Ajusta según sea necesario
+    const logoHeightCasa = 7; // Ajusta según sea necesario
 
     const logoCasaUnder = document.getElementById('logoCasaUnder');
-    const logoWidthCasaUnder = 8; // Ajusta según sea necesario
-    const logoHeightCasaUnder = 8; // Ajusta según sea necesario
+    const logoWidthCasaUnder = 7; // Ajusta según sea necesario
+    const logoHeightCasaUnder = 7; // Ajusta según sea necesario
 
     
 
+    // Configuración de posiciones para las cruces
+    const crossConfig = {
+        left: {
+            x: margin - 1 // Cruces izquierdas fijas
+        },
+        middle: {
+            x: margin + 91 // Puedes ajustar este valor para mover las cruces del medio
+        },
+        right: {
+            x: margin + 183.1 // Puedes ajustar este valor para mover las cruces de la derecha
+        }
+    };
+
     // Función auxiliar para dibujar una cruz
     function dibujarCruz(x, y) {
-        doc.setFontSize(22);
+        doc.setFontSize(20);
         doc.text('+', x, y);
     }
 
-    // Dibujar cruces para toda la página
+    // Función modificada para dibujar cruces con posiciones configurables
     function dibujarCrucesPagina() {
-        for (let i = 0; i <= 2; i++) {
-            for (let j = 0; j <= 4; j++) {
-                dibujarCruz(margin + i * (rotuloWidth + margin) - 3, margin + j * (rotuloHeight + margin) - 3);
-            }
+        // Dibuja las columnas de cruces
+        for (let j = 0; j <= 4; j++) {
+            const yPos = margin + j * (rotuloHeight + margin) - 3;
+            
+            // Dibuja cruces izquierdas (fijas)
+            dibujarCruz(crossConfig.left.x, yPos);
+            
+            // Dibuja cruces del medio
+            dibujarCruz(crossConfig.middle.x, yPos);
+            
+            // Dibuja cruces derechas
+            dibujarCruz(crossConfig.right.x, yPos);
         }
     }
 
@@ -199,20 +223,23 @@ function generarPDF() {
         const enlargedLogoWidthCasa = logoWidthCasa * 10; // Ajusta el tamaño del logo según sea necesario
         const enlargedLogoHeightCasa = logoHeightCasa * 0; // Ajusta el tamaño del logo según sea necesario
         const logoXCasa = x + (rotuloWidth - enlargedLogoWidthCasa) / 2; // Centrar horizontalmente
-        const logoYCasa = y  - 3; // Ajusta la posición vertical según sea necesario
+        const logoYCasa = y  - 4; // Ajusta la posición vertical según sea necesario
         doc.addImage(logoCasa, 'PNG', logoXCasa, logoYCasa, enlargedLogoWidthCasa, enlargedLogoHeightCasa);
 
         const additionalImageWidth = logoWidthCasaUnder * 10; // Ajusta el tamaño del logo según sea necesario    
         const additionalImageHeight = logoHeightCasaUnder * 0; // Ajusta el tamaño del logo según sea necesario    
         const additionalImageX = x + (rotuloWidth - additionalImageWidth) / 2; // Centrar horizontalmente
-        const additionalImageY = y + 50; // Ajusta la posición vertical según sea necesario
+        const additionalImageY = y + 38; // Ajusta la posición vertical según sea necesario
         doc.addImage(logoCasaUnder, 'PNG', additionalImageX, additionalImageY, additionalImageWidth, additionalImageHeight);
 
         }else if (rotulo.fondo === 'torreMRE') {
             // Agregar el logo MRE como marca de agua
-            const enlargedLogoWidth = logoWidth * 2.2; // Duplicar el ancho del logo
-            const enlargedLogoHeight = logoHeight * 3; // Duplicar la altura del logo
-            doc.addImage(logoMRE, 'PNG', x + rotuloWidth - enlargedLogoWidth - 5, y + rotuloHeight - enlargedLogoHeight - 8, enlargedLogoWidth, enlargedLogoHeight);
+            const enlargedLogoWidthTorre = logoWidthTorre * 2.2; // Duplicar el ancho del logo
+            const enlargedLogoHeightTorre = logoHeightTorre * 3; // Duplicar la altura del logo
+            const logoXTorre = x + (rotuloWidth - enlargedLogoWidthTorre) / 1; // Centrar horizontalmente
+            const logoYTorre = y  + 15; // Ajusta la posición vertical según sea necesario
+            doc.addImage(logoMRE, 'PNG', logoXTorre, logoYTorre, enlargedLogoWidthTorre, enlargedLogoHeightTorre);
+            // doc.addImage(logoMRE, 'PNG', x + rotuloWidth - enlargedLogoWidth - 5, y + rotuloHeight - enlargedLogoHeight - 8, enlargedLogoWidth, enlargedLogoHeight);
         } else if (rotulo.fondo === 'neutro') {
             //No agregar ningun logo
            
@@ -222,7 +249,7 @@ function generarPDF() {
             // Esta parte requiere un manejo más complejo que no se puede resolver completamente aquí
         }
 
-        doc.setFontSize(13);
+        doc.setFontSize(12);
         doc.setFont("helvetica");
 
         // Calcular la altura total del texto
@@ -238,11 +265,12 @@ function generarPDF() {
         const totalTextHeight = lines.length * lineHeight;
 
         // Calcular la posición inicial para centrar verticalmente
-        let textY = y + (rotuloHeight - totalTextHeight) / 2;
+        let textY = y + (rotuloHeight - totalTextHeight) / 2 + verticalOffset;
+
 
         // Dibujar el texto
         // Agregar el número de bien en la esquina inferior derecha
-        doc.text(rotulo.nroBien, x + rotuloWidth - 20, y + rotuloHeight - 5);
+        doc.text(rotulo.nroBien, x + rotuloWidth - 20, y + rotuloHeight + 2.4);
 
         doc.setFont("helvetica", "bold");
         doc.text(rotulo.autor, x + 5, textY);
@@ -255,6 +283,7 @@ function generarPDF() {
         doc.setFont("helvetica", "normal");
         doc.text(rotulo.fecha, x + 5, textY);
         textY += lineHeight;
+        
         doc.text(rotulo.tecnica, x + 5, textY);
         textY += lineHeight;
         doc.text(rotulo.medidas, x + 5, textY);
