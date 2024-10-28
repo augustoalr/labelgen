@@ -151,7 +151,7 @@ function generarPDF() {
     let count = 0;
 
 
-    const verticalOffset = 2; // Ajusta este valor: negativo = arriba, positivo = abajo
+    const verticalOffset = 6; // Ajusta este valor: negativo = arriba, positivo = abajo
   
   // Cargar el logo MRE
     const logoMRE = document.getElementById('logoMRE');
@@ -259,7 +259,8 @@ function generarPDF() {
             rotulo.titulo,
             rotulo.fecha,
             rotulo.tecnica,
-            rotulo.medidas
+            rotulo.medidas,
+            rotulo.firma
         ];
         const lineHeight = 5;
         const totalTextHeight = lines.length * lineHeight;
@@ -270,7 +271,7 @@ function generarPDF() {
 
         // Dibujar el texto
         // Agregar el número de bien en la esquina inferior derecha
-        doc.text(rotulo.nroBien, x + rotuloWidth - 20, y + rotuloHeight + 2.4);
+        doc.text(rotulo.nroBien, x + rotuloWidth - 16, y + rotuloHeight + 2.4);
 
         doc.setFont("helvetica", "bold");
         doc.text(rotulo.autor, x + 5, textY);
@@ -287,6 +288,7 @@ function generarPDF() {
         doc.text(rotulo.tecnica, x + 5, textY);
         textY += lineHeight;
         doc.text(rotulo.medidas, x + 5, textY);
+       
 
        
 
