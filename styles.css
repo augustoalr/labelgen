@@ -244,6 +244,11 @@ input, select, button {
 
 }
 
+select .personalizado
+{
+    color:red;
+    font-style: italic;
+}
 
 #musicaControl {
     background-color: #6a1b9a; /* Morado oscuro */
@@ -403,3 +408,5 @@ button:hover {
 button, .editButton, .deleteButton {
     box-shadow: 0 0 10px 2px rgba(255, 106, 53, 0.4);
 }
+
+

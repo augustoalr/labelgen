@@ -307,25 +307,3 @@ function generarPDF() {
     
 }
 
-
-
-
-// Control de la música halloween
-
-const fondoMusical = document.getElementById('fondoMusical');
-const musicaControl = document.getElementById('musicaControl');
-let isPlaying = false;
-
-musicaControl.addEventListener('click', function() {
-    if (isPlaying) {
-        fondoMusical.pause();
-        musicaControl.textContent = '🎵 Reproducir música';
-    } else {
-        fondoMusical.play();
-        musicaControl.textContent = '⏸️ Pausar música';
-    }
-    isPlaying = !isPlaying;
-});
-
-
-
