@@ -31,17 +31,17 @@ function generarRotulo() {
 
     function dividirTextoConPalabrasCompletas(texto, limite) {
         if (texto.length <= limite) return texto; // Si el texto ya es menor al límite, no lo divide.
-    
+
         // Encuentra el último espacio antes del límite
         let indexEspacio = texto.lastIndexOf(' ', limite);
-    
+
         // Si no encuentra un espacio, corta en el límite exacto (pero esto es raro)
         if (indexEspacio === -1) indexEspacio = limite;
-    
+
         // Divide el texto manteniendo las palabras completas
         return texto.slice(0, indexEspacio) + '\n' + texto.slice(indexEspacio + 1);
     }
-    
+
     // Aplicar la función a tu lógica
     if (rotulo.titulo.length > 38) {
         rotulo.titulo = dividirTextoConPalabrasCompletas(rotulo.titulo, 38);
@@ -49,7 +49,7 @@ function generarRotulo() {
         rotulo.tecnica = '\n' + rotulo.tecnica;
         rotulo.medidas = '\n' + rotulo.medidas;
     }
-    
+
 
     if (rotulo.fondo === 'personalizado') {
         rotulo.fondoSuperior = document.getElementById('fondoSuperior').files[0];
@@ -149,11 +149,11 @@ function generarPDF() {
     let x = margin;
     let y = margin;
     let count = 0;
-
+    
 
     const verticalOffset = 6; // Ajusta este valor: negativo = arriba, positivo = abajo
-  
-  // Cargar el logo MRE
+
+    // Cargar el logo MRE
     const logoMRE = document.getElementById('logoMRE');
     const logoWidthTorre = 7; // Ajusta según sea necesario
     const logoHeightTorre = 7; // Ajusta según sea necesario
@@ -167,7 +167,7 @@ function generarPDF() {
     const logoWidthCasaUnder = 7; // Ajusta según sea necesario
     const logoHeightCasaUnder = 7; // Ajusta según sea necesario
 
-    
+
 
     // Configuración de posiciones para las cruces
     const crossConfig = {
@@ -193,13 +193,13 @@ function generarPDF() {
         // Dibuja las columnas de cruces
         for (let j = 0; j <= 4; j++) {
             const yPos = margin + j * (rotuloHeight + margin) - 3;
-            
+
             // Dibuja cruces izquierdas (fijas)
             dibujarCruz(crossConfig.left.x, yPos);
-            
+
             // Dibuja cruces del medio
             dibujarCruz(crossConfig.middle.x, yPos);
-            
+
             // Dibuja cruces derechas
             dibujarCruz(crossConfig.right.x, yPos);
         }
@@ -215,35 +215,35 @@ function generarPDF() {
             dibujarCrucesPagina();
         }
 
-        
-      
-      // Aplicar fondo si es necesario
+
+
+        // Aplicar fondo si es necesario
         if (rotulo.fondo === 'casaAmarilla') {
-           // Agregar el logo Casa como marca de agua
-        const enlargedLogoWidthCasa = logoWidthCasa * 10; // Ajusta el tamaño del logo según sea necesario
-        const enlargedLogoHeightCasa = logoHeightCasa * 0; // Ajusta el tamaño del logo según sea necesario
-        const logoXCasa = x + (rotuloWidth - enlargedLogoWidthCasa) / 2; // Centrar horizontalmente
-        const logoYCasa = y  - 4; // Ajusta la posición vertical según sea necesario
-        doc.addImage(logoCasa, 'PNG', logoXCasa, logoYCasa, enlargedLogoWidthCasa, enlargedLogoHeightCasa);
+            // Agregar el logo Casa como marca de agua
+            const enlargedLogoWidthCasa = logoWidthCasa * 10; // Ajusta el tamaño del logo según sea necesario
+            const enlargedLogoHeightCasa = logoHeightCasa * 0; // Ajusta el tamaño del logo según sea necesario
+            const logoXCasa = x + (rotuloWidth - enlargedLogoWidthCasa) / 2; // Centrar horizontalmente
+            const logoYCasa = y - 4; // Ajusta la posición vertical según sea necesario
+            doc.addImage(logoCasa, 'PNG', logoXCasa, logoYCasa, enlargedLogoWidthCasa, enlargedLogoHeightCasa);
 
-        const additionalImageWidth = logoWidthCasaUnder * 10; // Ajusta el tamaño del logo según sea necesario    
-        const additionalImageHeight = logoHeightCasaUnder * 0; // Ajusta el tamaño del logo según sea necesario    
-        const additionalImageX = x + (rotuloWidth - additionalImageWidth) / 2; // Centrar horizontalmente
-        const additionalImageY = y + 38; // Ajusta la posición vertical según sea necesario
-        doc.addImage(logoCasaUnder, 'PNG', additionalImageX, additionalImageY, additionalImageWidth, additionalImageHeight);
+            const additionalImageWidth = logoWidthCasaUnder * 10; // Ajusta el tamaño del logo según sea necesario    
+            const additionalImageHeight = logoHeightCasaUnder * 0; // Ajusta el tamaño del logo según sea necesario    
+            const additionalImageX = x + (rotuloWidth - additionalImageWidth) / 2; // Centrar horizontalmente
+            const additionalImageY = y + 38; // Ajusta la posición vertical según sea necesario
+            doc.addImage(logoCasaUnder, 'PNG', additionalImageX, additionalImageY, additionalImageWidth, additionalImageHeight);
 
-        }else if (rotulo.fondo === 'torreMRE') {
+        } else if (rotulo.fondo === 'torreMRE') {
             // Agregar el logo MRE como marca de agua
             const enlargedLogoWidthTorre = logoWidthTorre * 2.2; // Duplicar el ancho del logo
             const enlargedLogoHeightTorre = logoHeightTorre * 3; // Duplicar la altura del logo
             const logoXTorre = x + (rotuloWidth - enlargedLogoWidthTorre) / 1; // Centrar horizontalmente
-            const logoYTorre = y  + 15; // Ajusta la posición vertical según sea necesario
+            const logoYTorre = y + 15; // Ajusta la posición vertical según sea necesario
             doc.addImage(logoMRE, 'PNG', logoXTorre, logoYTorre, enlargedLogoWidthTorre, enlargedLogoHeightTorre);
             // doc.addImage(logoMRE, 'PNG', x + rotuloWidth - enlargedLogoWidth - 5, y + rotuloHeight - enlargedLogoHeight - 8, enlargedLogoWidth, enlargedLogoHeight);
         } else if (rotulo.fondo === 'neutro') {
             //No agregar ningun logo
-           
-            
+
+
         } else if (rotulo.fondo === 'personalizado') {
             // Aquí necesitarías convertir las imágenes a base64 y luego agregarlas al PDF
             // Esta parte requiere un manejo más complejo que no se puede resolver completamente aquí
@@ -284,13 +284,13 @@ function generarPDF() {
         doc.setFont("helvetica", "normal");
         doc.text(rotulo.fecha, x + 5, textY);
         textY += lineHeight;
-        
+
         doc.text(rotulo.tecnica, x + 5, textY);
         textY += lineHeight;
         doc.text(rotulo.medidas, x + 5, textY);
-       
 
-       
+
+
 
         x += rotuloWidth + margin;
         if (x + rotuloWidth > pageWidth) {
@@ -302,8 +302,15 @@ function generarPDF() {
 
     doc.output('dataurlnewwindow');
 
-    
 
-    
+
+
 }
 
+function abrirPDFEnNuevaPestana(doc) {
+    doc.save("rotulo.pdf", { returnPromise: true }).then((data) => {
+        const pdfBlob = new Blob([data], { type: "application/pdf" });
+        const url = URL.createObjectURL(pdfBlob);
+        window.open(url, "_blank"); // Abre el PDF en una nueva pestaña
+    });
+}
